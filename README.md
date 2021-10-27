@@ -1,6 +1,6 @@
 # iOS device list
 
-[![npm](https://img.shields.io/npm/v/ios-device-list.svg)](https://www.npmjs.com/package/ios-device-list)
+[![npm](https://img.shields.io/npm/v/@dr-coton/ios-device-list.svg)](https://www.npmjs.com/package/@dr-coton/ios-device-list)
 
 Searchable collection of Apple devices.
 
@@ -8,6 +8,7 @@ Parameters per device:
 Generation, Model number ("A" Number), Bootrom, Variant, FCC ID, Internal Name, Identifier, Case Material, Color, Storage, Model
 
 Sources:
+
 - https://en.wikipedia.org/wiki/List_of_iOS_devices
 - https://www.theiphonewiki.com/wiki/Models
 - https://developer.apple.com/reference/uikit/uidevice
@@ -16,7 +17,7 @@ Sources:
 ## Install
 
 ```
-$ npm install ios-device-list
+$ npm install @dr-coton/ios-device-list
 ```
 
 ## Usage
@@ -24,16 +25,7 @@ $ npm install ios-device-list
 In node:
 
 ```js
-var iosDevices = require('ios-device-list');
-```
-
-In browser:
-
-```html
-<script src="node_modules/ios-device-list/dist/ios-device-list.min.js"></script>
-<script>
-  window.iosDeviceList // Object
-</script>
+var iosDevices = require("@dr-coton/ios-device-list");
 ```
 
 ### `.deviceTypes()` : Array
@@ -101,9 +93,9 @@ Returns a device list with matching Generation.
 With optional type parameter the result is filtered by the device type.
 
 `options` is an `Object`.
-- `caseInsensitive`: boolean *(default false)* - do not care of case type
-- `contains`: boolean *(default false)* - return partial (substring) results too
 
+- `caseInsensitive`: boolean _(default false)_ - do not care of case type
+- `contains`: boolean _(default false)_ - return partial (substring) results too
 
 ### `.deviceByANumber(anumber, [type], [options])` : Array
 
@@ -111,13 +103,11 @@ Returns a device list with matching "A" Number.
 
 With optional type parameter the result is filtered by the device type.
 
-
 ### `.deviceByFCCID(fccid, [type], [options])` : Array
 
 Returns a device list with matching FCC ID.
 
 With optional type parameter the result is filtered by the device type.
-
 
 ### `.deviceByInternalName(name, [type], [options])` : Array
 
@@ -125,13 +115,11 @@ Returns a device list with matching Internal Name.
 
 With optional type parameter the result is filtered by the device type.
 
-
 ### `.deviceByIdentifier(id, [type], [options])` : Array
 
 Returns a device list with matching Identifier.
 
 With optional type parameter the result is filtered by the device type.
-
 
 ### `.deviceByColor(color, [type], [options])` : Array
 
@@ -139,13 +127,11 @@ Returns a device list with matching Color.
 
 With optional type parameter the result is filtered by the device type.
 
-
 ### `.deviceByStorage(storage, [type], [options])` : Array
 
 Returns a device list with matching Storage.
 
 With optional type parameter the result is filtered by the device type.
-
 
 ### `.deviceByModel(model, [type], [options])` : Array
 
@@ -153,18 +139,16 @@ Returns a device list with matching Model.
 
 With optional type parameter the result is filtered by the device type.
 
-
 ### `.generationByIdentifier(id, [type])` : String
 
 Returns the generation name with matching Identifier.
 
 With optional type parameter the result is filtered by the device type.
 
-
 ## Example
 
 ```js
-var iosDevices = require('ios-device-list');
+var iosDevices = require("ios-device-list");
 
 var deviceTypes = iosDevices.deviceTypes();
 var devices = iosDevices.devices();
@@ -190,24 +174,24 @@ console.log(devices[500]);
 
 var iphone82;
 
-iphone82 = iosDevices.deviceByIdentifier('iPhone8,2');
+iphone82 = iosDevices.deviceByIdentifier("iPhone8,2");
 console.log(iphone82.length);
 // 24
 
-iphone82 = iosDevices.deviceByIdentifier('iphone8,2', null, { caseInsensitive: true });
+iphone82 = iosDevices.deviceByIdentifier("iphone8,2", null, {
+  caseInsensitive: true,
+});
 console.log(iphone82.length);
 // 24
 
-iphone82 = iosDevices.deviceByIdentifier('iPhone8', null, { contains: true });
+iphone82 = iosDevices.deviceByIdentifier("iPhone8", null, { contains: true });
 console.log(iphone82.length);
 // 56
 
-var gen = iosDevices.generationByIdentifier('iPhone8,2');
+var gen = iosDevices.generationByIdentifier("iPhone8,2");
 console.log(gen);
 // 'iPhone 6s Plus'
-
 ```
-
 
 ## License
 
